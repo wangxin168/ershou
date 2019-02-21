@@ -1,0 +1,59 @@
+<!--pages/release/release.wxml-->
+<!-- <text>pages/release/release.wxml</text> -->
+<form bindsubmit='bindFormSubmit'>
+
+  <view class='top {{jianrong==0?"ios":""}}'>
+    <view class='left' bindtap='fan'>
+      <image src='/img/qiepian.png'></image>
+    </view>
+    <view class='center'>确认信息</view>
+    <view></view>
+  </view>
+  <view class='da {{jianrong==0?"daxia":""}}'>
+    <view class='add'>添加联系方式</view>
+    <view class='phone'>
+      <text>手机</text>
+      <input type='tel' bindinput='phone' placeholder='请输入手机号（必填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+      <view bindtap='mima'>{{vals}}</view>
+    </view>
+    <view class='phone' style='border-top: 1rpx solid #E9E9E9;'>
+      <text>验证码</text>
+      <input type='tel' bindinput='yanzheng' placeholder='请输入验证码' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+      <view style='background:none;'></view>
+    </view>
+    <view class='phone' style='margin-top:14rpx;'>
+      <text>微信号</text>
+      <input type='text' bindinput='wxnum' placeholder='（选填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+      <view style='background:none;'></view>
+    </view>
+    <view class='shi'>
+      <image src='/img/shizi.png' bindtap='up_img' name="up_img" />
+      <image wx:for="{{tempFilePaths}}" wx:key="index" src='{{item}}' name="pic" mode="aspectFill" />
+
+      <input hidden name="pic" value="{{tempFilePaths}}"></input>
+    </view>
+  </view>
+  <view class='address'>
+    <view class='ding'>
+      <text>闲品所在位置</text>
+    </view>
+    <view class='bottom'>
+
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{pro_id}}" range="{{name}}" class='pick'>
+          <view class="picker">
+            <view wx:if="{{pro_id==''}}">{{name[0]}}</view>
+            <view wx:if="{{pro_id!=''}}">{{name[pro_id]}}</view>
+            <input hidden value='{{name[pro_id]}}'></input>
+            <image src='/img/dianji.png'></image>
+          </view>
+        </picker>
+      </view>
+      
+    </view>
+  </view>
+  <view class='jing'>
+    注意：发布虚假信息将会被封号
+  </view>
+  <button class='jia' form-type='submit'>确认上架</button>
+</form>

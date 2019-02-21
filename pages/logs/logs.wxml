@@ -1,0 +1,78 @@
+<form bindsubmit="bindFormSubmit">
+  <view class='er'>
+    <view class='top {{jianrong==0?"ios":""}}'>
+      <view class='left' bindtap='fan'>
+        <image src='/img/qiepian.png'></image>
+      </view>
+      <view class='center'>发布二手</view>
+      <view></view>
+    </view>
+    <view class='serch {{jianrong==0?"serchxia":""}}'>
+      <input type="text" placeholder='请输入物品名称' bindinput="val" placeholder-style='font-size: 28rpx;'></input>
+    </view>
+
+    <view class='old'>
+      <view class='sige'>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class='pick'>
+          <view class='zuo'>
+            <view style='float:left;' class='xinjiu'>新旧程度</view>
+            <view class="picker" style='float:left;'>
+              {{array[index]}}
+              <input hidden value='{{array[index]}}'></input>
+            </view>
+          </view>
+          <view class='jiantou'>
+            <image src='/img/dianji.png'></image>
+          </view>
+        </picker>
+
+      </view>
+
+      <view class='sige'>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" class='pick' >
+          <view class='zuo'>
+            <view style='float:left;' class='xinjiu'>分类</view>
+            <view class="picker" style='float:left;'>
+              <text wx:if="{{class_id==''}}">请选择分类</text>
+              <text wx:if="{{class_id!=''}}">{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}</text>
+              <input hidden value='{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}'></input>
+            </view>
+          </view>
+          <view class='jiantou'>
+            <image src='/img/dianji.png'></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class='hui'></view>
+    <view class='youji'>
+      <view class='left'>邮寄方式
+        <text>（可多选）</text>
+      </view>
+      <view class='right'>
+        <text wx:for="{{jiaoyi}}" wx:key="index" catchtap='transaction' data-tran="{{index}}" class='{{item.choose==true?"new":""}}'>{{item.name}}</text>
+      </view>
+    </view>
+    <view class='hui'></view>
+    <view class='youji'>
+      <view class='zuo'>价格$</view>
+      <view class='you'>
+        <input type="number" placeholder='请输入金额' name="price" bindinput="price" placeholder-style='color: #CACACA;font-size: 28rpx;'></input>
+      </view>
+    </view>
+    <view class='miaoshu'>
+      <textarea placeholder="请简要描述物品" maxlength="300" name="miaoshu" bindinput="miaoshu" placeholder-style='color: #CACACA;font-size: 28rpx;'>
+
+      </textarea>
+    </view>
+    <view class='shi'>
+      <image src='/img/shizi.png' bindtap='up_img' name="up_img" />
+      <image wx:for="{{tempFilePaths}}" wx:key="index" src='{{item}}' name="pic" mode="aspectFill" />
+
+      <input hidden name="pic" value="{{tempFilePaths}}"></input>
+    </view>
+    <button class='xiayibu' bindtap='aaa'>
+      下一步
+    </button>
+  </view>
+</form>

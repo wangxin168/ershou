@@ -1,0 +1,420 @@
+/* pages/list/list.wxss */
+
+page {
+  background: #f5f5f5;
+  position: absolute;
+  /* overflow-y: hidden; */
+}
+
+.dingbu {
+  height: 100%;
+  margin-top: 140rpx;
+}
+
+.top {
+  width: 100%;
+  background: #ffe600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+.top {
+  height: 140rpx;
+  line-height: 200rpx;
+}
+
+.ios {
+  height: 180rpx;
+  line-height: 260rpx;
+}
+
+.top view {
+  width: 33.3%;
+}
+
+.top view:nth-of-type(1) image {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.top view:nth-of-type(2) {
+  text-align: center;
+  font-size: 32rpx;
+  color: #060606;
+}
+
+.gray {
+  /* margin-top: 140rpx; */
+  width: 100%;
+  height: 82rpx;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  background: white;
+  z-index: 3;
+  position: fixed;
+  top: 140rpx;
+  left: 0;
+}
+
+.grayxia {
+  top: 180rpx;
+}
+
+.gray .li {
+  height: 25rpx;
+  width: 33.3%;
+  font-size: 26rpx;
+  color: #383838;
+  border-right: 1rpx solid #d8d8d8;
+  margin-top: 30rpx;
+  line-height: 25rpx;
+}
+
+.gray .li image {
+  width: 13.2rpx;
+  height: 9.3rpx;
+  margin-left: 7rpx;
+}
+
+/* 背景 */
+
+.zhe, .shaixuan {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.1);
+  top: 220rpx;
+  z-index: 1;
+}
+
+.da_da, .shai_da {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 222rpx;
+  z-index: 20;
+  overflow-y: auto;
+}
+
+.martop {
+  top: 262rpx;
+}
+
+.da_da .da {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  border-top: 1rpx solid #c1c1c1;
+}
+
+::-webkit-scrollbar {
+  /*隐藏滚轮*/
+  display: none;
+}
+
+.da_da .da .left {
+  width: 30%;
+  background: #f5f5f5;
+}
+
+.da_da .da .right {
+  width: 70%;
+}
+
+.da_da .da .left .bai {
+  background: white;
+}
+
+.da_da .da .right .li {
+  border-bottom: 1rpx solid #e7e7e7;
+  box-sizing: border-box;
+}
+
+.da_da .da .li {
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #5a5a5a;
+}
+
+.shai_da .con {
+  width: 70%;
+  margin-left: 30%;
+  background: white;
+  height: 150%;
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 90rpx;
+  width: 100%;
+  display: flex;
+  padding: 0 !important;
+}
+
+.btn button {
+  width: 50%;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 30rpx;
+  border-radius: 0 !important;
+}
+
+button::after {
+  border: none;
+}
+
+.shai_da .con>view {
+  padding: 20rpx 0 0;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e7e7e7;
+}
+
+.shai_da .con text {
+  font-size: 26rpx;
+  color: #8d8d8d;
+  padding: 20rpx 30rpx;
+}
+
+.shai_da .con .con_hot .address {
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  border-bottom: 1rpx solid #e7e7e7;
+  padding: 0 0 37rpx 0;
+}
+
+.shai_da .con .con_hot .address view {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  height: 55rpx;
+  font-size: 28rpx;
+  color: #8d8d8d;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 50px;
+  border: 1rpx solid #888;
+  margin-top: 20rpx;
+  margin-left: 5%;
+}
+
+.hot {
+  background: #ffe600;
+  font-size: 34rpx;
+  color: #464646;
+}
+
+.new {
+  background: #ffe600;
+  font-size: 34rpx;
+  color: #464646;
+}
+
+.qvyu {
+  width: 398rpx;
+  height: 55rpx;
+  background: #f5f5f5;
+  border: 1rpx solid #dadada;
+  border-radius: 36.5rpx;
+  margin-top: 29rpx;
+  margin-bottom: 36rpx;
+}
+
+.price_input {
+  display: flex;
+  width: 100%;
+  height: 55rpx;
+  margin-top: 29rpx;
+  margin-bottom: 36rpx;
+}
+
+.price_input input {
+  width: 165rpx;
+  height: 55rpx;
+  background: #f5f5f5;
+  border: 1rpx solid #dadada;
+  border-radius: 36.5rpx;
+}
+
+.shuru {
+  height: 55rpx;
+  font-size: 28rpx;
+  color: #cbcbcb;
+  line-height: 55rpx;
+  text-align: center;
+}
+
+.time_view {
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  margin-top: 29rpx;
+}
+
+.time_view view {
+  width: 140rpx;
+  height: 55rpx;
+  font-size: 28rpx;
+  color: #8d8d8d;
+  text-align: center;
+  line-height: 55rpx;
+  border-radius: 50px;
+  border: 1px solid #979797;
+  margin-bottom: 36rpx;
+  margin-left: 5%;
+}
+
+button::after {
+  border: none;
+}
+
+.content {
+  width: 94%;
+  margin: 128rpx auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  z-index: 0;
+  overflow-y: hidden;
+}
+
+.content .left, .content .right {
+  width: 48%;
+  margin-bottom: 30rpx;
+}
+
+.content .item {
+  width: 100%;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  display: inline-block;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.item-ava {
+  width: 53rpx;
+  height: 53rpx;
+  border-radius: 50rpx;
+}
+
+.heart_ {
+  margin-left: 18rpx;
+  font-size: 20rpx;
+  color: #c6c6c6;
+}
+
+.item-img {
+  width: 100%;
+  height: 260rpx !important;
+  border-radius: 10rpx 10rpx 0 0;
+}
+
+.content .item .item-title {
+  width: 100%;
+  z-index: 0;
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  color: #1e1e1e;
+  margin: 15rpx;
+}
+
+.item .name {
+  display: flex;
+  padding: 0 15rpx;
+  margin-top: 20rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+  font-size: 22rpx;
+  color: #1e1e1e;
+}
+
+.item-title-box {
+  display: flex;
+  position: relative;
+}
+
+.didi {
+  width: 100%;
+  padding: 0 15rpx 10rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #ececec;
+}
+
+.didi text:nth-of-type(1) {
+  font-size: 28rpx;
+  color: #fc6e21;
+}
+
+.didi text:nth-of-type(2) {
+  font-size: 24rpx;
+  color: #cbcbcb;
+}
+
+.name-title {
+  flex: 1;
+  margin-left: 18rpx;
+  margin-right: 25rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.name text:last-child {
+  flex: 0 0 30rpx;
+  color: #c4c4c4;
+  text-decoration: underline;
+  line-height: 10rpx;
+}
+
+.list {
+  width: 98%;
+  column-count: 2;
+  column-gap: 10rpx;
+  margin: 0 auto;
+  margin-top: 140rpx;
+}
+
+.card {
+  display: inline-block;
+  width: 98%;
+  /* height: 100%; *//* overflow: auto; */
+  padding-top: 20rpx;
+  background: red;
+  margin-top: 20rpx;
+}
+
+input {
+  text-align: center;
+  margin-left: 5%;
+}
+
+.kong {
+  width: 364rpx;
+  height: 344rpx;
+  display: block;
+  margin: 200rpx auto;
+}

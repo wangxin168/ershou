@@ -1,0 +1,175 @@
+<loading hidden="{{name && imgUrls && classification&& newlist}}">
+  加载中...
+</loading>
+<view class='yi' wx:if="{{categroy==1}}">
+  <view class='top {{jianrong==0?"ios":""}}'>
+    <view class='left'>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{name}}">
+        <view class="picker">
+          <view wx:if="{{index==''}}">
+            <text>{{name[0]}}</text>
+            <image src='/img/sanjiao.png'></image>
+          </view>
+          <view wx:if="{{index!=''}}">
+            <text>{{name[index]}}</text>
+            <image src='/img/sanjiao.png'></image>
+          </view>
+          <input hidden value='{{name[index]}}'></input>
+        </view>
+      </picker>
+    </view>
+
+    <view class='center'>墨尔本卖圈</view>
+    <view></view>
+  </view>
+  <view class='baise {{jianrong==0?"baixia":""}}'>
+    <view class='serch'>
+      <image src='/img/sousuo.png'></image>
+      <input type='text' placeholder='搜索' placeholder-class="place-holder" bindconfirm="chufa" bindinput='chufa'></input>
+    </view>
+    <!-- 轮播 -->
+    <view class='lun'>
+      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" indicator-color="rgba(255,255,255,0.5)" indicator-active-color="rgba(255,255,255,1)">
+        <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item.img}}" class="slide-image" bindtap='new_detail'  mode="aspectFill" data-type_id="{{item.type}}" data-article_id="{{item.article_id}}"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 分类 -->
+    <view class='fenlei'>
+      <view class='li' bindtap='list' wx:for="{{classification}}" wx:key="fica" data-oneid="{{item.id}}" data-name="{{item.name}}">
+        <image src='{{item.img}}'></image>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='new'>
+    <image src='/img/zuixin.png'></image>
+    <text>最新发布</text>
+  </view>
+  <image wx:if="{{newlist==''}}" src='/img/kongde.png' class='kong {{jianrong==0?"kongxia":""}}'></image>
+  <!-- 瀑布流 -->
+  <view class="content" wx:if="{{newlist!=''}}">
+    <view class="left">
+      <block wx:for="{{newlist}}" wx:key="">
+        <view class="item" bindtap='tiao' wx:if="{{index%2==0}}" data-goodid="{{item.id}}">
+          <!-- 图 -->
+          <image class="item-img" src="{{item.imgsss[0]}}" mode="aspectFill"></image>
+          <!-- 描述 -->
+          <view class="item-title-box">
+            <view url="url" class="item-title">{{item.goods_name}}</view>
+          </view>
+          <!-- 价格 日期 -->
+          <view class='didi'>
+            <text>${{item.price}}</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+            <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+            <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+          </view>
+          <!-- 头像昵称城市 -->
+          <view class="name">
+            <image class="item-ava" src="{{item.user_img}}"></image>
+            <view class='name_right'>
+              <text class="name-title">{{item.user_nickname}}</text>
+              <view class="heart_">{{item.city_name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="right">
+      <block wx:for="{{newlist}}" wx:key="">
+        <view class="item" bindtap='tiao' wx:if="{{index%2==1}}" data-goodid="{{item.id}}">
+          <!-- 图 -->
+          <image class="item-img" src="{{item.imgsss[0]}}" mode="aspectFill"></image>
+          <!-- 描述 -->
+          <view class="item-title-box">
+            <view url="url" class="item-title">{{item.goods_name}}</view>
+          </view>
+          <!-- 价格 日期 -->
+          <view class='didi'>
+            <text>${{item.price}}</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+            <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+            <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+          </view>
+          <!-- 头像昵称城市 -->
+          <view class="name">
+            <image class="item-ava" src="{{item.user_img}}"></image>
+            <view class='name_right'>
+              <text class="name-title">{{item.user_nickname}}</text>
+              <view class="heart_">{{item.city_name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!--浮窗 Top-->
+  <view class="backTop" bindtap='backTop' wx:if="{{backTopValue ==true}}">
+    <image src='/img/zhiding.png'></image>
+  </view>
+</view>
+
+<view class='san' wx:if="{{categroy==2}}">
+  <view class='geren' bindtap='zhuye' data-name="{{xinxi.nickname}}" data-img="{{xinxi.img}}" style="background-image: url('{{beijing}}');background-size: 100% 100%;">
+    <image src='{{xinxi.img}}'></image>
+    <text>{{xinxi.nickname}}</text>
+  </view>
+  <view class='list_ul'>
+    <view class='ul_li' bindtap='xiaoxi'>
+      <image src='/img/mixiaoxi.png'></image>
+      <text>我的消息</text>
+    </view>
+    <view class='ul_li' style='margin-top:22rpx;' bindtap='fabu'>
+      <image src='/img/myfabu.png'></image>
+      <text>我的发布</text>
+    </view>
+    <view class='ul_li' bindtap='shoucang'>
+      <image src='/img/myshou.png'></image>
+      <text>我的收藏</text>
+    </view>
+    <view class='ul_li' bindtap='guanzhu'>
+      <image src='/img/myguanzhu.png'></image>
+      <text>我的关注</text>
+    </view>
+    <view class='ul_li' style='margin-top:22rpx;' bindtap='guanyu'>
+      <image src='/img/guanyu.png'></image>
+      <text>关于我们</text>
+    </view>
+    <view class='ul_li' style="position: relative;">
+      <button open-type="contact" bindcontact="handleContact">
+        <image src='/img/lianxi.png'></image>
+        <text>联系客服</text>
+      </button>
+    </view>
+  </view>
+</view>
+
+<view class='sa'>
+  <image src='/img/baidi.png' class='baibei'></image>
+  <view class='top {{jianrong==0?"ios":""}}'>
+    <view class='left'></view>
+    <view class='center'>个人中心</view>
+    <view></view>
+  </view>
+  <view class='di'>
+    <image src='{{shouye==true?"/img/shoudian.png":"/img/shouwei.png"}}' bindtap='yi' data-idx="1"></image>
+    <view bindtap='yi' data-idx="1">首页</view>
+  </view>
+  <view class='di'>
+    <image src='/img/fabu.png' bindtap='er' class="{{seen?'imaa':''}}" style='width:82rpx;height:82rpx;margin-top:4rpx;'></image>
+  </view>
+  <view class='di' bindtap='wode'>
+    <image src='{{wode==true?"/img/mydian.png":"/img/mywei.png"}}' bindtap='yi' data-idx="2"></image>
+    <view bindtap='yi' data-idx="2">我的</view>
+  </view>
+</view>

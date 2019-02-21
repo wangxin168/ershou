@@ -1,0 +1,137 @@
+<!--pages/details/details.wxml-->
+<!-- <text>pages/details/details.wxml</text> -->
+<view class='top {{jianrong==0?"ios":""}}'>
+  <view class='left' bindtap='fan'>
+    <image src='/img/qiepian.png'></image>
+  </view>
+  <view class='center'>详情</view>
+  <view></view>
+</view>
+<!-- 轮播 -->
+<view class='lun {{jianrong==0?"lunxia":""}}'>
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
+    <block wx:for="{{imgurl}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" mode="aspectFit" data-src="{{item}}" catchtap="imgYu"/>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class='price'>
+  <text class='price_money'>${{detail.price}}</text>
+  <view class='price_right'>
+    <text>{{detail.look_number}}阅读</text>
+    <text>{{detail.collection_num}}收藏</text>
+  </view>
+</view>
+<view class='category'>
+  <view wx:for="{{mailarr}}" wx:key="index" style='background: #FFE600;color: #464646;'>{{item}}</view>
+  <view style='background: #7EB5C5;color: #FFFFFF;'>{{newold}}</view>
+</view>
+<view class='name'>
+  {{detail.goods_name}}
+</view>
+<view class='abstract'>
+  {{detail.jianjie}}
+</view>
+<view class='time'>
+  发布时间：{{detail.ctims}}
+</view>
+<view class='ul_li' bindtap='zhuye' data-name="{{detail.user_nickname}}" data-img="{{detail.user_img}}" data-followid="{{detail.uid}}">
+  <view class='left'>
+    <image src='{{detail.user_img}}'></image>
+    <text>{{detail.user_nickname}}</text>
+  </view>
+  <view class='right' catchtap='guanzhu' data-flowwid="{{detail.uid}}">
+    <view wx:if="{{is_follow_type==1}}">已关注</view>
+    <view wx:if="{{is_follow_type==2}}">关注</view>
+  </view>
+</view>
+<view class='buy'>
+  <view class='Buyer'>
+    买家其他闲品
+  </view>
+  <scroll-view class='buy_ul' scroll-x wx:if="{{xian!=''}}">
+    <view class='buy_li' wx:for="{{xian}}" wx:key="index" bindtap='tiao' data-goodid="{{item.id}}">
+      <image src='{{item.goods_imgs[0]}}' mode="aspectFill"></image>
+      <view>{{item.goods_name}}</view>
+      <view>$ {{item.price}}</view>
+    </view>
+  </scroll-view>
+  <view class='more' bindtap='zhuye' wx:if="{{xian!=''}}" data-name="{{detail.user_nickname}}" data-img="{{detail.user_img}}" data-followid="{{detail.uid}}">
+    更多闲品
+  </view>
+  <view class='more' wx:if="{{xian==''}}">
+    暂时没有其他闲品
+  </view>
+</view>
+<view class='buy' style='margin-top:10rpx;'>
+  <view class='Buyer'>
+    买家联系方式
+  </view>
+  <view class='contact'>
+    <view class='tel'>
+      <view class='tel_phone'>电话TEL:</view>
+      <view class='tel_num {{huang==0?" ":"huang"}}' selectable='true' bindtap='copyBtn'>{{detail.mobile}}</view>
+    </view>
+    <view class='tel'>
+      <view class='tel_phone'>微信Wechat:</view>
+      <view class='tel_num {{huang2==0?" ":"huang"}}' selectable='true' bindtap='copywei' wx:if="{{detail.wx_number!=''}}">{{detail.wx_number}}</view>
+      <view class='tel_num' wx:if="{{detail.wx_number==''}}">木有留微信啊</view>
+    </view>
+  </view>
+  <view class='code' wx:if="{{detail.wx_img_code!='https://safe.yuanchuangyuan.com'}}">
+    <view class='code_qr'>二维码Qr Code:</view>
+    <view class='tu_out' wx:key="index"> 
+      <image src='{{wx_img}}' mode="aspectFit" data-src="{{wx_img}}" bindtap="previewImage"></image>
+    </view>
+  </view>
+  <view class='hui'></view>
+  <view class='bottom'>
+    <view class='left'>
+      <view class='left_li'>
+        <image src='/img/shoudian.png' bindtap='shouye'></image>
+        <text bindtap='shouye'>主页</text>
+      </view>
+      <view class='left_li'>
+        <image src='/img/weishou.png' bindtap='shoucang' data-shouc="{{detail.id}}" wx:if="{{is_shoucang==0}}"></image>
+        <image src='/img/yishou.png' bindtap='shoucang' data-shouc="{{detail.id}}" wx:if="{{is_shoucang==1}}"></image>
+        <text>收藏</text>
+      </view>
+      <view class='left_li'>
+        <image src='/img/fenxiang.png'></image>
+        <text>分享</text>
+      </view>
+      <view class='left_li'>
+        <image src='/img/jubao.png' bindtap='jubao'></image>
+        <text>举报</text>
+      </view>
+    </view>
+    <view class='right' data-reply-phone="{{detail.mobile}}" bindtap="phoneCall">
+      <image src='/img/phone.png'></image>
+      <text>联系ta</text>
+    </view>
+  </view>
+</view>
+<!--浮窗 Top-->
+<view class="backTop" bindtap='backTop' wx:if="{{backTopValue ==true}}">
+  <image src='/img/zhiding.png'></image>
+</view>
+<view class='jubao' wx:if="{{jubao}}">
+  <view class='liyou'>
+    <view class='liyou_top'>
+      <view></view>
+      <view>举报理由</view>
+      <view><image src='/img/guanbi.png' bindtap='jubao'></image></view>
+    </view>
+    <view class='liyou_ul'>
+      <view class='liyou_li' wx:for="{{newoldarr}}" wx:key="index" data-liyou="{{index}}" bindtap='liyou'>
+        <text>{{item.name}}</text>
+        <image src='/img/gouwei.png' wx:if="{{item.isSeleted!=true}}"></image>
+        <image src='/img/gouxuan.png' wx:if="{{item.isSeleted==true}}"></image>
+      </view>
+    </view>
+    <input type='text' placeholder='请点击输入…' placeholder-style='font-size: 28rpx;color: #CBCBCB;' class='liyou_input' bindinput='liyoutext'></input>
+    <view class='queding' bindtap='queding' data-jubao_id="{{detail.id}}">确定</view>
+  </view>
+</view>

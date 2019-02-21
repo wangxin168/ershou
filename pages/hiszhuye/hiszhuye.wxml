@@ -1,0 +1,34 @@
+<view class='top {{jianrong==0?"ios":""}}'>
+  <view class='left' bindtap='fan' style='width:10%;'>
+    <image src='/img/qiepian.png'></image>
+  </view>
+  <view class='center' style='width:80%;'>{{name}}的主页</view>
+  <view style='width:10%;'></view>
+</view>
+<view class='user {{jianrong==0?"userxia":""}}' style="background-image: url('{{beijing}}');background-size: 100% 100%;">
+  <image src='{{img}}'></image>
+  <view class='name'>{{name}}</view>
+  <view wx:if="{{is_follow_type==1}}" class='guanzhu' bindtap='guanzhu'>已关注</view>
+  <view wx:if="{{is_follow_type==2}}" class='guanzhu' bindtap='guanzhu'>关注</view>
+</view>
+
+<view class='user_num'>
+  在架{{follow.zaijia_num}}件，累计发布{{follow.fabu_num}}件
+</view>
+<view class='zaijia'>
+  <view class='zaijia_li' wx:for="{{follow.data}}" wx:key="index" bindtap='tiao' data-goodid="{{item.id}}">
+    <image src='{{item.imgsss[0]}}' mode="aspectFill"></image>
+    <view class='goodname'>{{item.goods_name}}</view>
+    <view class='dibu'>
+      <view class='left'>${{item.price}}</view>
+      <view class='right'>
+        <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+        <text wx:if="{{item.day==0&&item.hores==0}}">{{item.mint}} mins ago</text>
+        <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+        <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+        <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+        <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+      </view>
+    </view>
+  </view>
+</view>

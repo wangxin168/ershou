@@ -1,0 +1,208 @@
+
+page {
+  background: white;
+  position: absolute;
+  /* overflow-y: hidden; */
+}
+.top {
+  width: 100%;
+  background: #ffe600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.top{
+  height: 140rpx;
+  line-height: 200rpx;
+}
+.ios{
+  height: 180rpx;
+  line-height: 260rpx;
+}
+.top view {
+  width: 33.3%;
+}
+
+.top view:nth-of-type(1) image {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.top view:nth-of-type(2) {
+  text-align: center;
+  font-size: 32rpx;
+  color: #060606;
+}
+.er{
+  width: 100%;
+  height: 100%;
+}
+
+.serch{
+  width: 100%;
+  padding: 0 3%;
+  box-sizing: border-box;
+  height: 95rpx;
+  margin-top: 140rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+.serchxia{
+  margin-top: 180rpx;
+}
+.serch input{
+  font-size: 28rpx;
+  color: #CBCBCB;
+  width: 100%;
+}
+.miaoshu{
+  width: 100%;
+  padding: 30rpx 4% 30rpx 4%;
+  box-sizing: border-box;
+  background: white;
+  border-top: 1rpx solid #E9E9E9;
+}
+.miaoshu textarea{
+  width: 100%;
+  font-size: 28rpx;
+  color: #CBCBCB;
+  height: 200rpx;
+}
+.old{
+  width: 100%;
+  background: white;
+}
+.sige{
+  width: 100%;
+  height: 95rpx;
+  line-height: 95rpx;
+  font-size: 28rpx;
+  color: #CBCBCB;
+  padding: 0 4%;
+  box-sizing: border-box;
+  border-top: 1rpx solid #E9E9E9;
+}
+
+.sige .pick{
+  width: 100%;
+}
+.sige .pick .zuo{
+  width: 90%;
+  float: left;
+}
+.sige .pick .jiantou{
+  float: left;
+  width: 10%;
+  text-align: right;
+  height: 95rpx;
+  line-height: 95rpx;
+}
+.sige .pick .jiantou image{
+  width: 28rpx;
+  height: 28rpx;
+  display: inline-block;
+}
+.sige .pick .zuo .xinjiu{
+  font-size: 30rpx;
+  color: #272727;
+  width: 55%;
+}
+.sige .pick .zuo .picker{
+  font-size: 28rpx;
+  color: #CACACA;
+  width: 35%;
+  margin-left: 10%;
+  text-align: right;
+}
+.youji{
+  width: 100%;
+  height: 95rpx;
+  line-height: 95rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  box-sizing: border-box;
+  background: white;
+}
+.youji .left{
+  width: 50%;
+  font-size: 30rpx;
+  color: #272727;
+}
+.youji .left text{
+  font-size: 28rpx;
+  color: #CACACA;
+}
+.youji .zuo{
+  width: 80%;
+  font-size: 30rpx;
+  color: #272727;
+}
+.youji .right{
+  width: 45%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.youji .you{
+  width: 80%;
+  font-size: 32rpx;
+  display: flex;
+  line-height: 80rpx;
+  align-items: center;
+}
+.youji .you input{
+  width: 100%;
+  text-align: right;
+  margin-right: 4%;
+  font-size: 28rpx;
+  color: #CACACA;
+}
+.youji .right text{
+  width: 140rpx;
+  height: 52rpx;
+  border: 1px solid #C0C0C0;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 52rpx;
+  font-size: 28rpx;
+  color: #CACACA;
+}
+.xiayibu{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 34rpx;
+  color: #464646;
+  text-align: center;
+  background: #FFE600;
+  border-radius: 0;
+}
+.shi{
+  width: 100%;
+  margin-bottom: 200rpx;
+}
+.shi image{
+  width: 199rpx;
+  height: 199rpx;
+  margin: 0 0 52rpx 30rpx;
+}
+.new{
+  background: #FFE600;
+  color: #464646!important;
+}
+.hui{
+  width: 100%;
+  height: 14rpx;
+  background: #F5F5F5;
+}

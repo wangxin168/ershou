@@ -1,0 +1,233 @@
+<!--pages/list/list.wxml-->
+<!-- <!-- <text>pages/list/list.wxml</text> -->
+<loading hidden="{{classification}}">
+  加载中...
+</loading>
+<scroll-view class='dingbu'>
+  <view class='top {{jianrong==0?"ios":""}}'>
+    <view class='left' bindtap='fan'>
+      <image src='/img/qiepian.png'></image>
+    </view>
+    <view class='center'>{{name}}</view>
+    <view></view>
+  </view>
+  <view class='gray {{jianrong==0?"grayxia":""}}'>
+    <view class='li' bindtap='dianJi'>
+      <text>{{name}}</text>
+      <image src='/img/xiala.png'></image>
+    </view>
+    <view class='li' bindtap='price' wx:if="{{price==0}}">
+      <text>价格</text>
+      <image src='/img/xiala.png'></image>
+    </view>
+    <view class='li' bindtap='price' wx:if="{{price==1}}">
+      <text>从低到高</text>
+      <image src='/img/xiala.png'></image>
+    </view>
+    <view class='li' bindtap='price' wx:if="{{price==2}}">
+      <text>从高到低</text>
+      <image src='/img/xiala.png'></image>
+    </view>
+    <view class='li' bindtap='shaixuan' style='border-right:none;'>
+      <text>筛选</text>
+      <image src='/img/xiala.png'></image>
+    </view>
+  </view>
+  <!-- 类别 -->
+  <view class='zhe' wx:if="{{display}}">
+
+  </view>
+
+  <view class='da_da {{jianrong==0?"martop":""}}' wx:if="{{display}}" bindtap='dianJi'>
+    <view class='da'>
+      <view class='left'>
+        <view class='li {{item.choose==true?"bai":""}}' catchtap='xuanze' wx:for="{{classification}}" wx:key="index" data-oneid="{{item.id}}" data-one="{{index}}" data-onename="{{item.name}}">{{item.name}}</view>
+      </view>
+      <view class='right' wx:if="{{twolist!=''}}">
+        <view class='li' catchtap='xuanzesan' wx:for="{{twolist}}" wx:key="index" data-name="{{item.name}}" data-twoid="{{item.id}}">{{item.name}}</view>
+      </view>
+      <image wx:if="{{twolist==''}}" src='/img/kongde.png' class='kong'></image>
+    </view>
+  </view>
+
+  <!-- 筛选 --> 
+  <view class='shaixuan' wx:if="{{shaixuan}}">
+
+  </view>
+
+  <view class='shai_da {{jianrong==0?"martop":""}}' wx:if="{{shaixuan}}" bindtap='shaixuan' style='height:{{height-105}}px;'>
+    <view class='con' catchtap='wuyong'>
+      <!-- 热门城市 -->
+      <view class='con_hot'>
+        <text>热门区域（多选）</text>
+        <view class='address'>
+          <view wx:for="{{hotcity}}" wx:key="index" wx:if="{{item.is_hot==2}}" catchtap='hotcity' class='{{item.selects==true?"hot":""}}' data-idx="{{index}}">{{item.name}}</view>
+        </view>
+        <text>其他区域</text>
+        <input type='text' placeholder='输入区域' placeholder-class='shuru' bindinput="jujiao" value="{{city_name}}" class='qvyu'></input>
+      </view>
+      <!-- 价格区间 -->
+      <view class='price'>
+        <text>价格区间</text>
+        <view class='price_input'>
+          <input type='number' placeholder='最低价' placeholder-class='shuru' bindinput="low" value="{{s_price}}"></input>
+          <input type='number' placeholder='最高价' placeholder-class='shuru' bindinput="long" value="{{e_price}}"></input>
+        </view>
+      </view>
+      <!-- 发布时间 -->
+      <view class='time'>
+        <text>发布时间</text>
+        <view class='time_view'>
+          <view wx:for="{{time}}" wx:key="index" data-time="{{index}}" catchtap='time' class='{{item.isSeleted==true?"hot":""}}'>{{item.name}}</view>
+        </view>
+      </view>
+      <!-- 新旧程度 -->
+      <view class='time'>
+        <text>新旧程度（多选）</text>
+        <view class='time_view'>
+          <view catchtap='newold' wx:for="{{newoldarr}}" wx:key="index" data-nwo="{{index}}" class='{{item.choose==true?"new":""}}'>{{item.name}}</view>
+        </view>
+      </view>
+      <!-- 交易方式 -->
+      <view class='time' style='border-bottom:none'>
+        <text>交易方式（多选）</text>
+        <view class='time_view'>
+          <view catchtap='transaction' wx:for="{{jiaoyi}}" wx:key="index" data-tran="{{index}}" class='{{item.choose==true?"new":""}}'>{{item.name}}</view>
+        </view>
+      </view>
+      <!-- 重置  确认 -->
+      <view class='btn' style='border-bottom:none'>
+        <button class='chongzhi' catchtap='chongzhi' style='background: #7EB5C5;color: #FFFFFF;'>重置</button>
+        <button class='queren' catchtap='queding' style='background: #FFE600;color: #2E2E2E;'>确认</button>
+      </view>
+    </view>
+  </view>
+  <!-- 瀑布流 -->
+  <view class="content" wx:if="{{shaixuan==false&&display==false&&classcon!=''}}">
+    <view class="left">
+      <block wx:for="{{classcon}}" wx:key="">
+        <view class="item" bindtap='tiao' wx:if="{{index%2==0}}" data-goodid="{{item.id}}">
+          
+          <!-- 图 -->
+          <image class="item-img" src="{{item.imgsss[0]}}" mode="aspectFill"></image>
+          <!-- 描述 -->
+          <view class="item-title-box">
+            <view url="url" class="item-title">{{item.goods_name}}</view>
+          </view>
+          <!-- 价格 日期 -->
+          <view class='didi'>
+            <text>${{item.price}}</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+            <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+            <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+          </view>
+          <!-- 头像昵称城市 -->
+          <view class="name">
+            <image class="item-ava" src="{{item.user_img}}"></image>
+            <view class='name_right'>
+              <text class="name-title">{{item.user_nickname}}</text>
+              <view class="heart_">{{item.city_name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="right">
+      <block wx:for="{{classcon}}" wx:key="">
+        <view class="item" bindtap='tiao' wx:if="{{index%2==1}}" data-goodid="{{item.id}}">
+          
+          <!-- 图 -->
+          <image class="item-img" src="{{item.imgsss[0]}}" mode="aspectFill"></image>
+          <!-- 描述 -->
+          <view class="item-title-box">
+            <view url="url" class="item-title">{{item.goods_name}}</view>
+          </view>
+          <!-- 价格 日期 -->
+          <view class='didi'>
+            <text>${{item.price}}</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+            <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+            <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+          </view>
+          <!-- 头像昵称城市 -->
+          <view class="name">
+            <image class="item-ava" src="{{item.user_img}}"></image>
+            <view class='name_right'>
+              <text class="name-title">{{item.user_nickname}}</text>
+              <view class="heart_">{{item.city_name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="content" wx:if="{{shaixuan==true||display==true&&classcon!=''}}" style='height:{{height-140}}px'>
+    <view class="left">
+      <block wx:for="{{classcon}}" wx:key="">
+        <view class="item" bindtap='tiao' wx:if="{{index%2==0}}" data-goodid="{{item.id}}">
+          <!-- 图 -->
+          <image class="item-img" src="{{item.imgsss[0]}}" mode="aspectFill"></image>
+          <!-- 描述 -->
+          <view class="item-title-box">
+            <view url="url" class="item-title">{{item.goods_name}}</view>
+          </view>
+          <!-- 价格 日期 -->
+          <view class='didi'>
+            <text>${{item.price}}</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+            <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+            <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+          </view>
+          <!-- 头像昵称城市 -->
+          <view class="name">
+            <image class="item-ava" src="{{item.user_img}}"></image>
+            <view class='name_right'>
+              <text class="name-title">{{item.user_nickname}}</text>
+              <view class="heart_">{{item.city_name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="right">
+      <block wx:for="{{classcon}}" wx:key="">
+        <view class="item" bindtap='tiao' wx:if="{{index%2==1}}" data-goodid="{{item.id}}">
+          <!-- 图 -->
+          <image class="item-img" src="{{item.imgsss[0]}}" mode="aspectFill"></image>
+          <!-- 描述 -->
+          <view class="item-title-box">
+            <view url="url" class="item-title">{{item.goods_name}}</view>
+          </view>
+          <!-- 价格 日期 -->
+          <view class='didi'>
+            <text>${{item.price}}</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
+            <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
+            <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
+            <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>
+            <text wx:if="{{item.day>0&&item.day>1}}">{{item.day}} days ago</text>
+          </view>
+          <!-- 头像昵称城市 -->
+          <view class="name">
+            <image class="item-ava" src="{{item.user_img}}"></image>
+            <view class='name_right'>
+              <text class="name-title">{{item.user_nickname}}</text>
+              <view class="heart_">{{item.city_name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <image wx:if="{{classcon==''&&shaixuan==false&&display==false}}" src='/img/kongde.png' class='kong'></image>
+</scroll-view>

@@ -1,0 +1,45 @@
+page {
+  background: white;
+  position: absolute;
+  /* overflow-y: hidden; */
+}
+.top {
+  width: 100%;
+  background: #ffe600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.top{
+  height: 140rpx;
+  line-height: 200rpx;
+}
+.ios{
+  height: 180rpx;
+  line-height: 260rpx;
+}
+.top view {
+  width: 33.3%;
+}
+
+.top view:nth-of-type(1) image {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.top view:nth-of-type(2) {
+  text-align: center;
+  font-size: 32rpx;
+  color: #060606;
+}
+.list_ul{
+  margin-top: 140rpx;
+}
+.liatxia{
+  margin-top: 180rpx;
+}

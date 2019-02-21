@@ -1,0 +1,141 @@
+/* pages/zhuye/zhuye.wxss */
+
+page {
+  background: #f5f5f5;
+  position: absolute;
+  /* overflow-y: hidden; */
+}
+
+.top {
+  width: 100%;
+  background: #ffe600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.top{
+  height: 140rpx;
+  line-height: 200rpx;
+}
+.ios{
+  height: 180rpx;
+  line-height: 260rpx;
+}
+.top view {
+  width: 33.3%;
+}
+
+.top view:nth-of-type(1) image {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.top view:nth-of-type(2) {
+  text-align: center;
+  font-size: 32rpx;
+  color: #060606;
+}
+
+.user {
+  width: 100%;
+  height: 358rpx;
+  text-align: center;
+  background: orange;
+  margin-top: 140rpx;
+}
+.userxia{
+  margin-top: 180rpx;
+}
+.user image {
+  width: 111rpx;
+  height: 111rpx;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 49rpx;
+}
+
+.user .name {
+  font-size: 32rpx;
+  color: #2e2e2e;
+  margin-top: 14rpx;
+}
+
+.user .guanzhu {
+  width: 175rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border: 1px solid #373737;
+  border-radius: 32px;
+  font-size: 32rpx;
+  color: #464646;
+  margin: 34rpx auto 0;
+  text-align: center;
+}
+
+.user_num {
+  width: 100%;
+  background: white;
+  padding: 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #adadad;
+}
+
+.zaijia {
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+
+.zaijia .zaijia_li {
+  width: 48%;
+  background: #fff;
+  border-radius: 10px;
+  height: 100%;
+  padding: 0 0 16rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.zaijia .zaijia_li image {
+  width: 100%;
+  height: 260rpx;
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.zaijia .zaijia_li .dibu {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+}
+
+.zaijia .zaijia_li .dibu .left {
+  font-size: 28rpx;
+  color: #fc6e21;
+}
+
+.zaijia .zaijia_li .dibu .right {
+  font-size: 24rpx;
+  color: #cbcbcb;
+}
+
+.zaijia .zaijia_li .goodname {
+  font-size: 28rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  color: #2e2e2e;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}

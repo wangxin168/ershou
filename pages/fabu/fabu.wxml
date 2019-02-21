@@ -1,0 +1,54 @@
+<!--pages/fabu/fabu.wxml-->
+<!-- <text>pages/fabu/fabu.wxml</text> -->
+<view class='top {{jianrong==0?"ios":""}}'>
+  <view class='left' bindtap='fan'>
+    <image src='/img/qiepian.png'></image>
+  </view>
+  <view class='center'>我的发布</view>
+  <view></view>
+</view>
+<!-- tab  切换 -->
+<view class="swiper-tab {{jianrong==0?'tabxia':''}}">
+  <view class="swiper-tab-list {{currentTab==idx ? 'on' : ''}}" data-current="{{idx}}" data-tid="{{idx}}" bindtap="swichNav" wx:for="{{navtab}}" wx:key="index" wx:for-index="idx">{{item}}</view>
+</view>
+<view class="swiper-box">
+  <view wx:if="{{currentTab===0}}" class="swiper-item">
+
+    <view class='zaijia'>
+      <view class='zaijia_li' wx:for="{{zaijia}}" wx:key="index" bindtap='tiao' data-goodid="{{item.id}}">
+        <image src='{{item.imgsss[0]}}' mode="aspectFill"></image>
+        <view class='title'>{{item.goods_name}}</view>
+        <view class='dibu'>
+          <view class='left'>${{item.price}}</view>
+          <view class='right'>
+            {{item.look_number}}阅读
+          </view>
+        </view>
+        <view class='xiajia'>
+          <view></view>
+          <image src='/img/xiajia.png' catchtap='xiajia' data-goodid="{{item.id}}"></image>
+        </view>
+      </view>
+    </view>
+    <image wx:if="{{zaijia==''}}" src='/img/kongde.png' class='kong'></image>
+  </view>
+  <view wx:if="{{currentTab===1}}" class="swiper-item">
+    <view class='zaijia'>
+      <view class='zaijia_li' wx:for="{{xiajia}}" wx:key="index" bindtap='tiao' data-goodid="{{item.id}}">
+        <image src='{{item.imgsss[0]}}' mode="aspectFill"></image>
+        <view class='title'>{{item.goods_name}}</view>
+        <view class='dibu'>
+          <view class='left'>${{item.price}}</view>
+          <view class='right'>
+            {{item.look_number}}阅读
+          </view>
+        </view>
+        <view class='xiajia'>
+          <view></view>
+          <!-- <image src='/img/xiajia.png' catchtap='xiajia' data-goodid="{{item.id}}"></image> -->
+        </view>
+      </view>
+    </view>
+    <image wx:if="{{xiajia==''}}" src='/img/kongde.png' class='kong'></image>
+  </view>
+</view>

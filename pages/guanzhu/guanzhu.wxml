@@ -1,0 +1,21 @@
+<!--pages/guanzhu/guanzhu.wxml-->
+<!-- <text>pages/guanzhu/guanzhu.wxml</text> -->
+<view class='top {{jianrong==0?"ios":""}}'>
+  <view class='left' bindtap='fan'>
+    <image src='/img/qiepian.png'></image>
+  </view>
+  <view class='center'>我的关注</view>
+  <view></view>
+</view>
+<view class='list_ul {{jianrong==0?"listxia":""}}'>
+  <view class='ul_li' wx:for="{{follow}}" wx:key="index" bindtap='hisye' data-name="{{item.user_nickname}}" data-img="{{item.user_img}}" data-followid="{{item.follow_uid}}">
+    <view class='left'>
+      <image src='{{item.user_img}}'></image>
+      <text>{{item.user_nickname}}</text>
+    </view>
+    <view class='right' catchtap='guanzhu' data-flowwid="{{item.follow_uid}}">
+      <view>已关注</view>
+    </view>
+  </view>
+</view>
+<image wx:if="{{follow==''}}" src='/img/kongde.png' class='kong'></image>

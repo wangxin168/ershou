@@ -1,0 +1,25 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/xiaoxi/xiaoxi",
+    "pages/fabu/fabu",
+    "pages/shoucang/shoucang",
+    "pages/guanzhu/guanzhu",
+    "pages/guanyu/guanyu",
+    "pages/list/list",
+    "pages/details/details",
+    "pages/zhuye/zhuye",
+    "pages/release/release",
+    "pages/login/login",
+    "pages/hiszhuye/hiszhuye",
+    "pages/wenzhang/wenzhang"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "navigationStyle": "custom"
+  }
+}

@@ -1,0 +1,159 @@
+page {
+  background: #F5F5F5;
+  position: absolute;
+  /* overflow-y: hidden; */
+}
+.top {
+  width: 100%;
+  background: #ffe600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4%;
+  box-sizing: border-box;
+  z-index: 10;
+}
+.top{
+  height: 140rpx;
+  line-height: 200rpx;
+}
+.ios{
+  height: 180rpx;
+  line-height: 260rpx;
+}
+.top view {
+  width: 33.3%;
+}
+
+.top view:nth-of-type(1) image {
+  width: 33rpx;
+  height: 33rpx;
+}
+
+.top view:nth-of-type(2) {
+  text-align: center;
+  font-size: 32rpx;
+  color: #060606;
+}
+.da{
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 32rpx;
+  margin-top: 140rpx;
+}
+.daxia{
+  margin-top: 180rpx;
+}
+.add{
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  height: 83rpx;
+  line-height: 83rpx;
+  font-size: 28rpx;
+color: #7E7E7E;
+}
+.phone{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+.phone text{
+  font-size: 30rpx;
+color: #272727;
+width: 20%;
+}
+.phone input{
+  outline: none;
+  border: none;
+  width: 60%;
+}
+.phone view{
+  line-height: 59rpx;
+  text-align: center;
+  width: 200rpx;
+  height: 59rpx;
+  background: #FFE600;
+border-radius: 29.5px;
+font-size: 24rpx;
+color: #464646;
+}
+.address{
+  width: 100%;
+  background: white;
+  margin-top: 20rpx;
+  height: 307rpx;
+}
+.address .ding,.address .pick .picker{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+.address .bottom image{
+  width: 28rpx;
+  height: 28rpx;
+  margin-top: 30rpx;
+}
+.address .ding text:nth-of-type(1){
+  font-size: 32rpx;
+}
+.address .ding text:nth-of-type(2){
+  font-size: 24rpx;
+}
+.address .bottom text:nth-of-type(1){
+  font-size: 32rpx;
+}
+.address .bottom text:nth-of-type(2){
+  font-size: 32rpx;
+}
+.picker{
+  font-size: 32rpx;
+}
+.jing{
+  width: 100%;
+  height: 100rpx;
+  padding: 0 4%;
+  box-sizing: border-box;
+  line-height: 100rpx;
+  text-align: left;
+  font-size: 28rpx;
+  color: #999999;
+  position: fixed;
+  bottom: 110rpx;
+  left: 0;
+}
+.jia{
+  width: 100%;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  background: #FFE600;
+  font-size: 34rpx;
+  color: #464646;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+button::after{
+  border:none;
+}
+.shi{
+  width: 100%;
+  background: white;
+}
+.shi image{
+  width: 199rpx;
+  height: 199rpx;
+  margin: 0 0 52rpx 30rpx;
+}

@@ -1,0 +1,18 @@
+<!--pages/xiaoxi/xiaoxi.wxml-->
+<!-- <text>pages/xiaoxi/xiaoxi.wxml</text> -->
+<view class='top {{jianrong==0?"ios":""}}'>
+  <view class='left' bindtap='fan'>
+    <image src='/img/qiepian.png'></image>
+  </view>
+  <view class='center'>我的消息</view>
+  <view></view>
+</view>
+<view class='xiaoxi_ul {{jianrong==0?"xiaoxia":""}}'>
+  <view class='xiaoxi' wx:for="{{xiaoxi}}" wx:key="index">
+    <image src='/img/xitong.png'></image>
+    <view class='right'>
+      <view class='title'>{{item.title}}</view>
+      <view class='jianjie'>{{item.jianjie}}</view>
+    </view>
+  </view>
+</view>
