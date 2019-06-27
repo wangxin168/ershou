@@ -23,7 +23,7 @@
       <view class='left'>${{item.price}}</view>
       <view class='right'>
         <text wx:if="{{item.day==0&&item.hores==0&&item.mint<=1}}">{{item.mint}} min ago</text>
-        <text wx:if="{{item.day==0&&item.hores==0}}">{{item.mint}} mins ago</text>
+        <text wx:if="{{item.day==0&&item.hores==0&&item.mint>1}}">{{item.mint}} mins ago</text>
         <text wx:if="{{item.day==0&&item.mint>60&&item.hores==1}}">{{item.hores}} hour ago</text>
         <text wx:if="{{item.day==0&&item.mint>60&&item.hores>1}}">{{item.hores}} hours ago</text>
         <text wx:if="{{item.day>0&&item.day==1}}">{{item.day}} day ago</text>

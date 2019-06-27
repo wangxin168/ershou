@@ -233,69 +233,7 @@ Page({
     })
   },
 
-  bindFormSubmit: function(e) {
-    var that = this;
-    that.setData({
-      release: that.data.release+1
-    })
-    var img2 = this.data.upload_img
-    var wx_code = img2.join(',')
-    if (that.data.yanzheng == "") {
-      wx.showToast({
-        title: '验证码不能为空',
-        icon: "none"
-      })
-      return false
-    }
-    if (that.data.release>2){
-      return;
-    }
-    console.log(that.data.release)
-    var uid = wx.getStorageSync('id')
-
-    var that = this;
-    wx.request({
-      url: getApp().globalData.url + '/index.php/api/Index/fabu',
-      data: {
-        uid: uid,
-        goods_name: that.data.wupin,
-        jianjie: that.data.miaoshu,
-        img: that.data.img,
-        new_old: that.data.index,
-        mail: that.data.tranNum,
-        price: that.data.price,
-        mobile: that.data.phone,
-        code: that.data.yanzheng,
-        wx_number: that.data.wxnum,
-        city_id: that.data.pro_id + 1,
-        wx_img: wx_code,
-        class_one_id: that.data.oneid,
-        class_two_id: that.data.class_id
-      },
-      success: res => {
-
-        if (res.data.status == 200) {
-          wx.showToast({
-            title: res.data.data,
-            icon: "none"
-          })
-          setTimeout(function() {
-            wx.reLaunch({
-              url: '/pages/index/index'
-            });
-          }, 500)
-        } else if (res.data.status == 201) {
-          wx.showToast({
-            title: res.data.data,
-            icon: "none"
-          })
-          return;
-        }
-      }
-    });
-
-
-  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

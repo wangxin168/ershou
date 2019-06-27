@@ -8,6 +8,11 @@
   <view></view>
 </view>
 <view class='list_ul {{jianrong==0?"liatxia":""}}'>
-
-  空的
+  <image src='/img/guanmi.png'></image>
+  <view class='guanyu'>
+    <view class='careme'>关于我们</view>
+    <view class='moer'>
+      墨尔本卖圈是一个专为墨尔本华人提供的交易平台，用户可在小程序内发布全新或二手的闲置物品，他人即可联系进行购买。
+    </view> 
+  </view>
 </view>

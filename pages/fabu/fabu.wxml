@@ -30,7 +30,7 @@
         </view>
       </view>
     </view>
-    <image wx:if="{{zaijia==''}}" src='/img/kongde.png' class='kong'></image>
+    <image wx:if="{{zaijia==''}}" src='/img/hei_kong.png' class='kong'></image>
   </view>
   <view wx:if="{{currentTab===1}}" class="swiper-item">
     <view class='zaijia'>

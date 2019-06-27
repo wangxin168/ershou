@@ -18,4 +18,4 @@
     </view>
   </view>
 </view>
-<image wx:if="{{follow==''}}" src='/img/kongde.png' class='kong'></image>
+<image wx:if="{{follow==''}}" src='/img/hei_kong.png' class='kong'></image>

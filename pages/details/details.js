@@ -1,4 +1,6 @@
 // pages/details/details.js
+import CTB from '../../utils/canvas-text-break.js';
+import wxp from '../../utils/wxp.js';
 Page({
 
   /**
@@ -47,7 +49,15 @@ Page({
     jianrong: "",
     // 微信码
     wx_img_code: "",
-    wx_img: []
+    wx_img: [],
+    display:false,
+    beij:false,
+    NEW_WIDTH: 750 + 40,
+    NEW_HEIGHT: 1148 + 40,
+    windowWidth:"",
+    windowHeight:"",
+    cardCreateImgUrl:"",
+    erwei_img:getApp().globalData.url
   },
 
   /**
@@ -57,8 +67,13 @@ Page({
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
+        console.log(res)
         that.setData({
           systemInfo: res,
+          // left:系统宽度减去view宽度除以2
+          windowWidth: (res.windowWidth - 320)/2,
+          // top:系统高度减去view高度除以2
+          windowHeight: (res.windowHeight - 460) / 2
         })
         if (res.platform == "ios") {
           that.setData({
@@ -74,13 +89,13 @@ Page({
     that.setData({
       goodid: options.goodid
     })
-    that.xuanran()
+    that.xuanran();
   },
   fan: function () {
     wx.navigateBack({
 
     })
-  },
+  }, 
   xuanran:function(){
     var that=this;
     var uid = wx.getStorageSync('id');
@@ -91,6 +106,7 @@ Page({
         goods_id: that.data.goodid
       },
       success: res => {
+        console.log(res)
         that.setData({
           detail: res.data.data[0],
           imgurl: res.data.data[0].imgsss,
@@ -153,6 +169,126 @@ Page({
 
       }
     })
+  },
+  fenxiang:function(){
+    var that=this;
+    that.setData({
+      display:!that.data.display,
+      beij:!that.data.beij
+    })
+    that.huizhi()
+  },
+  huizhi:function(){
+    var that=this;
+    // 图片
+    var ctx = wx.createCanvasContext('customCanvas')
+    ctx.save();
+    ctx.drawImage(that.data.imgurl[0], 0, 0, 320, 216)
+    //调用draw()开始绘制
+    ctx.restore()
+    // 白色的底
+    ctx.save();
+    ctx.setFillStyle('#ffffff')
+    ctx.fillRect(0, 216, 320, 50)
+    ctx.restore()
+    // 文字 
+    ctx.setFillStyle('#2E2E2E')//文字颜色：默认黑色
+    ctx.setFontSize(14)//设置字体大小，默认10
+    ctx.fillText(that.data.detail.goods_name, 15, 240)//绘制文本
+    ctx.restore()
+    // 文字2
+    ctx.setFillStyle('#FC6E21')//文字颜色：默认黑色
+    ctx.setFontSize(15)//设置字体大小，默认10
+    ctx.fillText('$' + that.data.detail.price, 15, 260)//绘制文本
+    ctx.restore()
+    // 黄色的底
+    ctx.setFillStyle('#FFE600')
+    ctx.fillRect(0, 266, 320, 125)
+    ctx.restore()
+    // 分享个好物
+    ctx.setFillStyle('#2E2E2E')//文字颜色：默认黑色
+    ctx.setFontSize(14)//设置字体大小，默认10
+    ctx.fillText('分享个好物', 15, 300)//绘制文本
+    ctx.restore()
+    // 快来看墨尔本
+    ctx.setFillStyle('#2E2E2E')//文字颜色：默认黑色
+    ctx.setFontSize(13)//设置字体大小，默认10
+    ctx.fillText('快来看墨尔本～', 15, 330)//绘制文本
+    ctx.restore()
+    // 小程序码
+    ctx.drawImage(that.data.imgurl[0], 225, 275, 70, 70)
+    //调用draw()开始绘制
+    ctx.restore()
+    ctx.draw(false, () => {
+      // 生成图片
+      wx.canvasToTempFilePath({
+        canvasId: 'customCanvas',
+        success: function (res) {
+          that.setData({
+            cardCreateImgUrl: res.tempFilePath
+          })
+        }
+      })
+    });
+  },
+  saveImgBefore() {
+    // 查看用户是否有保存相册的权限
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.writePhotosAlbum'] === false) {
+          this.openConfirm();
+        } else {
+          this.saveImg();
+        }
+      }
+    });
+  },
+  openConfirm() {
+    wx.showModal({
+      content: '检测到您没打开保存相册权限，是否去设置打开？',
+      success: res => {
+        if (res.confirm) {
+          wx.openSetting({
+            success: res => {
+              if (res.authSetting['scope.writePhotosAlbum']) {
+                this.saveImg();
+              }
+            }
+          });
+        }
+      }
+    });
+  },
+  saveImg() {
+    const {
+      cardCreateImgUrl,
+    } = this.data;
+
+    // 画上logo 会有裁剪的现象
+    wx.showLoading({
+      title: '保存中...',
+      mask: true
+    });
+    wx.saveImageToPhotosAlbum({
+      filePath: cardCreateImgUrl,
+      success() {
+        wx.showToast({
+          title: '保存成功！',
+          icon: 'success'
+        });
+      },
+      fail(err) {
+        wx.hideLoading();
+      }
+    });
+  },
+  guanbi:function(){
+    var that = this;
+    that.setData({
+      display: false,
+      beij:false
+    })
+    that.onShow();
   },
   // 监听滚动条坐标
   onPageScroll: function (e) {
@@ -317,7 +453,6 @@ Page({
           })
           that.xuanran()
         }
-
       }
     })
   },
@@ -333,8 +468,6 @@ Page({
    */
   onShow: function () {
     var that = this;
-
-    
     // 获取小程序码
     wx.request({
       url: getApp().globalData.url + "/index.php/api/Index/share",
@@ -356,7 +489,7 @@ Page({
         // })
       }
     })
-
+    
   },
   // 拨打电话
   phoneCall: function (e) {

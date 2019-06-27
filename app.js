@@ -37,6 +37,6 @@ App({
   globalData: {
     userInfo: null,
     code: "",
-    url:"https://safe.yuanchuangyuan.com"
+    url:"https://www.auscircle.com"
   }
 })

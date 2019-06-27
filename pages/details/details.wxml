@@ -76,16 +76,28 @@
     </view>
     <view class='tel'>
       <view class='tel_phone'>微信Wechat:</view>
-      <view class='tel_num {{huang2==0?" ":"huang"}}' selectable='true' bindtap='copywei' wx:if="{{detail.wx_number!=''}}">{{detail.wx_number}}</view>
-      <view class='tel_num' wx:if="{{detail.wx_number==''}}">木有留微信啊</view>
+      <view class='tel_num {{huang2==0?" ":"huang"}}' selectable='true' bindtap='copywei' wx:if="{{detail.wx_number!='undefined'}}">{{detail.wx_number}}</view>
+      <view class='tel_num' wx:if="{{detail.wx_number=='undefined'}}">木有留微信啊</view>
     </view>
   </view>
-  <view class='code' wx:if="{{detail.wx_img_code!='https://safe.yuanchuangyuan.com'}}">
+  <view class='code' wx:if="{{detail.wx_img_code!=erwei_img}}">
     <view class='code_qr'>二维码Qr Code:</view>
     <view class='tu_out' wx:key="index"> 
       <image src='{{wx_img}}' mode="aspectFit" data-src="{{wx_img}}" bindtap="previewImage"></image>
     </view>
   </view>
+  <!-- canvas -->
+  <view class='beij' wx:if="{{beij}}"></view>
+  <view class='fenxiang' wx:if="{{display}}" style='left:{{windowWidth}}px;top:{{windowHeight}}px;'>
+    <view class='cha' bindtap='guanbi'>
+      <image src='/img/guanbi.png'></image>
+    </view>
+    <canvas canvas-id='customCanvas' class="poster__my-canvas">
+
+    </canvas>
+    <view class='baocun' bindtap='saveImgBefore'>保存图片</view>
+  </view>
+  
   <view class='hui'></view>
   <view class='bottom'>
     <view class='left'>
@@ -98,6 +110,7 @@
         <image src='/img/yishou.png' bindtap='shoucang' data-shouc="{{detail.id}}" wx:if="{{is_shoucang==1}}"></image>
         <text>收藏</text>
       </view>
+      <!-- <view class='left_li' bindtap='fenxiang'> -->
       <view class='left_li'>
         <image src='/img/fenxiang.png'></image>
         <text>分享</text>

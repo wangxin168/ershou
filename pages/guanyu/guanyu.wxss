@@ -1,7 +1,8 @@
 page {
   background: white;
   position: absolute;
-  /* overflow-y: hidden; */
+  height: 100%;
+  overflow-y: hidden;
 }
 .top {
   width: 100%;
@@ -39,7 +40,37 @@ page {
 }
 .list_ul{
   margin-top: 140rpx;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 .liatxia{
   margin-top: 180rpx;
+}
+.list_ul>image{
+  width: 100%;
+  height: 100%;
+}
+.list_ul .guanyu{
+  width: 92%;
+  position: absolute;
+  left: 4%;
+  top: 315rpx;
+  border-radius: 8px;
+  background: white;
+  padding: 31rpx 50rpx 50rpx 50rpx;
+  box-sizing: border-box;
+}
+.list_ul .guanyu .careme{
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  color: #2E2E2E;
+}
+.list_ul .guanyu .moer{
+  margin-top: 33rpx;
+  font-size: 30rpx;
+  color: #8D8D8D;
+  line-height:24px;  
+  letter-spacing:1rpx;  
 }

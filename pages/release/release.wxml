@@ -38,7 +38,6 @@
       <text>闲品所在位置</text>
     </view>
     <view class='bottom'>
-
       <view class="section">
         <picker bindchange="bindPickerChange" value="{{pro_id}}" range="{{name}}" class='pick'>
           <view class="picker">

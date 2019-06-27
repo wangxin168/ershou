@@ -10,14 +10,13 @@
     "pages/list/list",
     "pages/details/details",
     "pages/zhuye/zhuye",
-    "pages/release/release",
     "pages/login/login",
     "pages/hiszhuye/hiszhuye",
     "pages/wenzhang/wenzhang"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#fff", 
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black",
     "navigationStyle": "custom"

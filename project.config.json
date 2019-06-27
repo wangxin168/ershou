@@ -8,11 +8,14 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": false,
+		"autoAudits": false,
+		"uglifyFileName": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
-	"appid": "wx775502530a0d6c7e",
+	"appid": "wxe755b9074ccfdddc",
 	"projectname": "ershou",
 	"debugOptions": {
 		"hidedInDevtools": []

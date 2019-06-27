@@ -46,7 +46,7 @@
       <view class='right' wx:if="{{twolist!=''}}">
         <view class='li' catchtap='xuanzesan' wx:for="{{twolist}}" wx:key="index" data-name="{{item.name}}" data-twoid="{{item.id}}">{{item.name}}</view>
       </view>
-      <image wx:if="{{twolist==''}}" src='/img/kongde.png' class='kong'></image>
+      <image wx:if="{{twolist==''}}" src='/img/hei_kong.png' class='kong'></image>
     </view>
   </view>
 
@@ -229,5 +229,5 @@
       </block>
     </view>
   </view>
-  <image wx:if="{{classcon==''&&shaixuan==false&&display==false}}" src='/img/kongde.png' class='kong'></image>
+  <image wx:if="{{classcon==''&&shaixuan==false&&display==false}}" src='/img/hei_kong.png' class='kong'></image>
 </scroll-view>

@@ -3,11 +3,11 @@
 
   </view>
 
-  <view class='center'>center</view>
+  <view class='center'>墨尔本</view>
   <view></view>
 </view>
 <view wx:if="{{canIUse}}" class='ding {{jianrong==0?"dingxia":""}}'>
-  <image src='/img/fabu.png'></image>
+  <image src='/img/logo.png' style='border-radius:50%;'></image>
   <view class='title'>墨尔本</view>
   <view class='trips'>申请获取以下权限</view>
   <view class='infos'>获得你的公开信息（昵称，头像）</view>
@@ -18,4 +18,4 @@
 </view>
 
 <view wx:else>请升级微信版本</view>
-<!-- <web-view src="https://mp.weixin.qq.com/s/X3PFDxDeFAFY78lTVAR52g"></web-view> -->
+<!-- <web-view src="https://mp.weixin.qq.com/s/X3PFDxDeFAFY78lTVAR52g"></web-view>
