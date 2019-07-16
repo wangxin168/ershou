@@ -230,4 +230,5 @@
     </view>
   </view>
   <image wx:if="{{classcon==''&&shaixuan==false&&display==false}}" src='/img/hei_kong.png' class='kong'></image>
+  <view wx:if="{{classcon==''&&shaixuan==false&&display==false}}" style='font-size:32rpx;text-align:center;width:100%;color:gray;"'>这里空空如也呢TT</view>
 </scroll-view>

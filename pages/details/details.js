@@ -57,7 +57,13 @@ Page({
     windowWidth:"",
     windowHeight:"",
     cardCreateImgUrl:"",
-    erwei_img:getApp().globalData.url
+    erwei_img:getApp().globalData.url,
+    canvas_type:1,
+    // erweima
+    canvasewm:'',
+    goods_name:'',
+    price:'',
+    img_detail:''
   },
 
   /**
@@ -117,9 +123,14 @@ Page({
           is_shoucang: res.data.data[0].is_shoucang,
           wx_img_code: res.data.data[0].wx_img_code,
           phone: res.data.data[0].mobile,
-          weixin: res.data.data[0].wx_number
+          weixin: res.data.data[0].wx_number,
+          goods_name: res.data.data[0].goods_name,
+          price: res.data.data[0].price,
+          img_detail: res.data.data[0].imgsss[0],
+          width: res.data.data[0].img_info.width,
+          height: res.data.data[0].img_info.height
         })
-
+        console.log(that.data.width)
         // 判断自取邮寄
         if (that.data.mail == 0) {
           that.setData({
@@ -174,113 +185,123 @@ Page({
     var that=this;
     that.setData({
       display:!that.data.display,
-      beij:!that.data.beij
+      beij:true
     })
-    that.huizhi()
   },
-  huizhi:function(){
-    var that=this;
-    // 图片
-    var ctx = wx.createCanvasContext('customCanvas')
-    ctx.save();
-    ctx.drawImage(that.data.imgurl[0], 0, 0, 320, 216)
-    //调用draw()开始绘制
-    ctx.restore()
-    // 白色的底
-    ctx.save();
-    ctx.setFillStyle('#ffffff')
-    ctx.fillRect(0, 216, 320, 50)
-    ctx.restore()
-    // 文字 
-    ctx.setFillStyle('#2E2E2E')//文字颜色：默认黑色
-    ctx.setFontSize(14)//设置字体大小，默认10
-    ctx.fillText(that.data.detail.goods_name, 15, 240)//绘制文本
-    ctx.restore()
-    // 文字2
-    ctx.setFillStyle('#FC6E21')//文字颜色：默认黑色
-    ctx.setFontSize(15)//设置字体大小，默认10
-    ctx.fillText('$' + that.data.detail.price, 15, 260)//绘制文本
-    ctx.restore()
-    // 黄色的底
-    ctx.setFillStyle('#FFE600')
-    ctx.fillRect(0, 266, 320, 125)
-    ctx.restore()
-    // 分享个好物
-    ctx.setFillStyle('#2E2E2E')//文字颜色：默认黑色
-    ctx.setFontSize(14)//设置字体大小，默认10
-    ctx.fillText('分享个好物', 15, 300)//绘制文本
-    ctx.restore()
-    // 快来看墨尔本
-    ctx.setFillStyle('#2E2E2E')//文字颜色：默认黑色
-    ctx.setFontSize(13)//设置字体大小，默认10
-    ctx.fillText('快来看墨尔本～', 15, 330)//绘制文本
-    ctx.restore()
-    // 小程序码
-    ctx.drawImage(that.data.imgurl[0], 225, 275, 70, 70)
-    //调用draw()开始绘制
-    ctx.restore()
-    ctx.draw(false, () => {
-      // 生成图片
-      wx.canvasToTempFilePath({
-        canvasId: 'customCanvas',
-        success: function (res) {
-          that.setData({
-            cardCreateImgUrl: res.tempFilePath
-          })
-        }
-      })
+ 
+  canvasdraw: function () {
+    var that = this; 
+    wx.showToast({
+      title: '图片正在生成保存中',
+      icon: 'loading',
+      duration: 5000
     });
-  },
-  saveImgBefore() {
-    // 查看用户是否有保存相册的权限
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.writePhotosAlbum'] === false) {
-          this.openConfirm();
-        } else {
-          this.saveImg();
-        }
+    that.setData({
+      canvas_type: 2
+    })
+    wx.getImageInfo({
+      src: that.data.img_detail,
+      success(res) {
+        console.log(res)
+        that.setData({
+          img_detail: res.path
+        })
+        setTimeout(function () {
+          console.log(that.data.img_detail)
+        }, 1000)
       }
-    });
-  },
-  openConfirm() {
-    wx.showModal({
-      content: '检测到您没打开保存相册权限，是否去设置打开？',
-      success: res => {
-        if (res.confirm) {
-          wx.openSetting({
-            success: res => {
-              if (res.authSetting['scope.writePhotosAlbum']) {
-                this.saveImg();
-              }
-            }
-          });
-        }
+    })
+    wx.getImageInfo({
+      src: that.data.canvasewm,
+      success(res) {
+        console.log(res)
+        that.setData({
+          canvasewm: res.path
+        })
+        setTimeout(function () {
+          console.log(that.data.canvasewm)
+          that.huizhi()
+        }, 1000)
       }
-    });
+    })
   },
-  saveImg() {
-    const {
-      cardCreateImgUrl,
-    } = this.data;
+  
+  huizhi: function () {
+    var that = this;
+    let ratio = that.data.ratio;
+    var canvas = wx.createCanvasContext('canvas');
+    var canvasewm = that.data.canvasewm;
+    var img_detail = that.data.img_detail;
+    var tuijian = that.data.goods_name;
+    var price = that.data.price;
+    var w = that.data.width
+    var h = that.data.height
+    var dw = 300 / w          //canvas与图片的宽高比
+    var dh = 200 / h
+    canvas.setFillStyle('#ffffff');
+    canvas.fillRect(0, 0, 375 * ratio, 550 * ratio);
 
-    // 画上logo 会有裁剪的现象
-    wx.showLoading({
-      title: '保存中...',
-      mask: true
-    });
-    wx.saveImageToPhotosAlbum({
-      filePath: cardCreateImgUrl,
-      success() {
-        wx.showToast({
-          title: '保存成功！',
-          icon: 'success'
-        });
-      },
-      fail(err) {
-        wx.hideLoading();
+    canvas.setFillStyle('#ffe600');
+    canvas.fillRect(0, 320 * ratio, 375 * ratio, 110 * ratio);
+
+    canvas.setFillStyle('#FC6E21') //文字颜色：默认黑色
+    canvas.setFontSize(18 * ratio) //设置字体大小，默认10
+    canvas.fillText('$'+price, 20 * ratio, 290 * ratio) //绘制文本
+
+    canvas.setFillStyle('#2E2E2E') //文字颜色：默认黑色
+    canvas.setFontSize(16 * ratio) //设置字体大小，默认10
+    canvas.fillText(tuijian, 20 * ratio, 270 * ratio) //绘制文本
+
+    canvas.setFillStyle('#2E2E2E') //文字颜色：默认黑色
+    canvas.setFontSize(14 * ratio) //设置字体大小，默认10
+    canvas.fillText('分享个好物', 20 * ratio, 365 * ratio) //绘制文本
+
+    canvas.setFillStyle('#333') //文字颜色：默认黑色
+    canvas.setFontSize(14 * ratio) //设置字体大小，默认10
+    canvas.fillText('快来看墨尔本~', 20 * ratio, 385 * ratio) //绘制文本
+
+    canvas.setFillStyle('#333') //文字颜色：默认黑色
+    canvas.setFontSize(14 * ratio) //设置字体大小，默认10
+
+    canvas.drawImage(canvasewm, 230 * ratio, 330 * ratio, 92 * ratio, 92 * ratio);
+    // canvas.drawImage(img_detail, 0 * ratio, 0 * ratio, 344 * ratio, 230 * ratio);
+    // 裁剪图片中间部分
+    if (w > 300 && h > 200 || w < 300 && h < 200) {
+      if (dw > dh) {
+        canvas.drawImage(img_detail, 0, (h - 200 / dw) / 2, w, 200 / dw, 0, 0, 344 * ratio, 230 * ratio)
+      } else {
+        canvas.drawImage(img_detail, (w - 300 / dh) / 2, 0, 300 / dh, h, 0, 0, 344 * ratio, 230 * ratio)
       }
-    });
+    }
+    // canvas.drawImage(img_detail, 0 * ratio, 0 * ratio);
+    canvas.draw(true, setTimeout(function () {
+      that.save_tp()
+    }, 1000));
+  },
+  save_tp: function () {
+    var that=this;
+    wx.canvasToTempFilePath({
+      canvasId: 'canvas',
+      fileType: 'jpg',
+      success(res) {
+        wx.authorize({
+          scope: 'scope.writePhotosAlbum',
+          success() {
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success() {
+                wx.showToast({
+                  title: '图片保存成功'
+                })
+                that.setData({
+                  beij: false
+                })
+              }
+            })
+          }
+        })
+      }
+    }, this)
   },
   guanbi:function(){
     var that = this;
@@ -460,7 +481,15 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        that.setData({
+          ratio: res.screenWidth / 375
+        })
+      },
+    })
   },
 
   /**
@@ -474,7 +503,7 @@ Page({
       data: {
         goods_id: that.data.goodid,
         page: "pages/details/details",
-        width: 1280,
+        width: 280,
         auto_color: false,
         line_color: {
           "r": 0,
@@ -483,10 +512,10 @@ Page({
         }
       },
       success: res => {
-        // console.log(res)
-        // that.setData({
-        //   classification: res.data.data
-        // })
+        console.log(res)
+        that.setData({
+          canvasewm: res.data.data
+        })
       }
     })
     

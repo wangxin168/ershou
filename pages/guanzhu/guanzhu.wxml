@@ -19,3 +19,4 @@
   </view>
 </view>
 <image wx:if="{{follow==''}}" src='/img/hei_kong.png' class='kong'></image>
+<view wx:if="{{follow==''}}" style='font-size:32rpx;text-align:center;width:100%;color:gray;"'>这里空空如也呢TT</view>

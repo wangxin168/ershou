@@ -413,8 +413,8 @@ input {
 }
 
 .kong {
-  width: 300rpx;
-  height: 300rpx;
+  width: 200rpx;
+  height: 200rpx;
   display: block;
-  margin: 200rpx auto;
+  margin: 200rpx auto 50rpx;
 }

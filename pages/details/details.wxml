@@ -12,7 +12,7 @@
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true">
     <block wx:for="{{imgurl}}" wx:key="index">
       <swiper-item>
-        <image src="{{item}}" class="slide-image" mode="aspectFit" data-src="{{item}}" catchtap="imgYu"/>
+        <image src="{{item}}" class="slide-image" mode="aspectFit" data-src="{{item}}" catchtap="imgYu" />
       </swiper-item>
     </block>
   </swiper>
@@ -82,22 +82,37 @@
   </view>
   <view class='code' wx:if="{{detail.wx_img_code!=erwei_img}}">
     <view class='code_qr'>二维码Qr Code:</view>
-    <view class='tu_out' wx:key="index"> 
+    <view class='tu_out' wx:key="index">
       <image src='{{wx_img}}' mode="aspectFit" data-src="{{wx_img}}" bindtap="previewImage"></image>
     </view>
   </view>
   <!-- canvas -->
-  <view class='beij' wx:if="{{beij}}"></view>
-  <view class='fenxiang' wx:if="{{display}}" style='left:{{windowWidth}}px;top:{{windowHeight}}px;'>
-    <view class='cha' bindtap='guanbi'>
-      <image src='/img/guanbi.png'></image>
-    </view>
-    <canvas canvas-id='customCanvas' class="poster__my-canvas">
+  <view class='beij' wx:if="{{beij}}">
+    <view class='fenxiang' wx:if="{{display}}">
+      <view class='cha' bindtap='guanbi'>
+        <image src='/img/guanbi.png'></image>
+      </view>
+      <view class='top_con'>
+        <image src='{{imgurl[0]}}' mode="aspectFit" class='con_img'></image>
+        <view class='con_fen'>
+          <view class='fen_title'>{{detail.goods_name}}</view>
+          <view class='fen_price'>${{detail.price}}</view>
+        </view>
+        <view class='fen_huang'>
+          <view>
+            <view style='font-size: 28rpx;color: #2E2E2E;'>分享个好物</view>
+            <view style='font-size: 26rpx;color: #2E2E2E;'>快来看墨尔本～</view>
+          </view>
+          <image src='{{canvasewm}}' class='erwei_fen'></image>
+        </view>
+      </view>
 
-    </canvas>
-    <view class='baocun' bindtap='saveImgBefore'>保存图片</view>
+      <view class='baocun' bindtap='canvasdraw'>保存图片</view>
+    </view>
   </view>
-  
+  <view class='canvas_box {{canvas_type==1?canvas_hide:""}}'>
+    <canvas canvas-id='canvas' class="my_canvas" style="width: 90%; height: 470px"></canvas>
+  </view>
   <view class='hui'></view>
   <view class='bottom'>
     <view class='left'>
@@ -110,8 +125,8 @@
         <image src='/img/yishou.png' bindtap='shoucang' data-shouc="{{detail.id}}" wx:if="{{is_shoucang==1}}"></image>
         <text>收藏</text>
       </view>
-      <!-- <view class='left_li' bindtap='fenxiang'> -->
-      <view class='left_li'>
+      <view class='left_li' bindtap='fenxiang'>
+        <!-- <view class='left_li'> -->
         <image src='/img/fenxiang.png'></image>
         <text>分享</text>
       </view>
@@ -135,7 +150,9 @@
     <view class='liyou_top'>
       <view></view>
       <view>举报理由</view>
-      <view><image src='/img/guanbi.png' bindtap='jubao'></image></view>
+      <view>
+        <image src='/img/guanbi.png' bindtap='jubao'></image>
+      </view>
     </view>
     <view class='liyou_ul'>
       <view class='liyou_li' wx:for="{{newoldarr}}" wx:key="index" data-liyou="{{index}}" bindtap='liyou'>
