@@ -278,6 +278,7 @@ Page({
   },
   // 点击热门城市
   hotcity: function(e) {
+    console.log(e)
     var hotCityData = this.data.hotcity
     var that = this;
     // 下标
@@ -433,6 +434,7 @@ Page({
     wx.request({
       url: getApp().globalData.url + "/index.php/api/Index/get_city",
       success: res => {
+        console.log(res)
         that.setData({
           hotcity: res.data.data
         })

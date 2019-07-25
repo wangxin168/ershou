@@ -248,7 +248,7 @@ page {
 
 .lun {
   width: 100%;
-  height: 300rpx;
+  height: 432rpx;
   /* margin-top: 20rpx; */
 }
 
@@ -275,6 +275,7 @@ page {
   margin: 20rpx auto;
   padding: 0 43rpx;
   box-sizing: border-box;
+  border: 1px solid #000;
   /* z-index: 1; */
 }
 

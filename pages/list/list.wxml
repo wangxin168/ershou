@@ -12,10 +12,10 @@
     <view></view>
   </view>
   <view class='gray {{jianrong==0?"grayxia":""}}'>
-    <view class='li' bindtap='dianJi'>
+    <!-- <view class='li' bindtap='dianJi'>
       <text>{{name}}</text>
       <image src='/img/xiala.png'></image>
-    </view>
+    </view> -->
     <view class='li' bindtap='price' wx:if="{{price==0}}">
       <text>价格</text>
       <image src='/img/xiala.png'></image>
@@ -59,42 +59,42 @@
     <view class='con' catchtap='wuyong'>
       <!-- 热门城市 -->
       <view class='con_hot'>
-        <text>热门区域（多选）</text>
+        <text>热门区域</text>
         <view class='address'>
           <view wx:for="{{hotcity}}" wx:key="index" wx:if="{{item.is_hot==2}}" catchtap='hotcity' class='{{item.selects==true?"hot":""}}' data-idx="{{index}}">{{item.name}}</view>
         </view>
-        <text>其他区域</text>
-        <input type='text' placeholder='输入区域' placeholder-class='shuru' bindinput="jujiao" value="{{city_name}}" class='qvyu'></input>
+        <!-- <text>其他区域</text>
+        <input type='text' placeholder='输入区域' placeholder-class='shuru' bindinput="jujiao" value="{{city_name}}" class='qvyu'></input> -->
       </view>
       <!-- 价格区间 -->
-      <view class='price'>
+      <!-- <view class='price'>
         <text>价格区间</text>
         <view class='price_input'>
           <input type='number' placeholder='最低价' placeholder-class='shuru' bindinput="low" value="{{s_price}}"></input>
           <input type='number' placeholder='最高价' placeholder-class='shuru' bindinput="long" value="{{e_price}}"></input>
         </view>
-      </view>
+      </view> -->
       <!-- 发布时间 -->
-      <view class='time'>
+      <!-- <view class='time'>
         <text>发布时间</text>
         <view class='time_view'>
           <view wx:for="{{time}}" wx:key="index" data-time="{{index}}" catchtap='time' class='{{item.isSeleted==true?"hot":""}}'>{{item.name}}</view>
         </view>
-      </view>
+      </view> -->
       <!-- 新旧程度 -->
-      <view class='time'>
+      <!-- <view class='time'>
         <text>新旧程度（多选）</text>
         <view class='time_view'>
           <view catchtap='newold' wx:for="{{newoldarr}}" wx:key="index" data-nwo="{{index}}" class='{{item.choose==true?"new":""}}'>{{item.name}}</view>
         </view>
-      </view>
+      </view> -->
       <!-- 交易方式 -->
-      <view class='time' style='border-bottom:none'>
+      <!-- <view class='time' style='border-bottom:none'>
         <text>交易方式（多选）</text>
         <view class='time_view'>
           <view catchtap='transaction' wx:for="{{jiaoyi}}" wx:key="index" data-tran="{{index}}" class='{{item.choose==true?"new":""}}'>{{item.name}}</view>
         </view>
-      </view>
+      </view> -->
       <!-- 重置  确认 -->
       <view class='btn' style='border-bottom:none'>
         <button class='chongzhi' catchtap='chongzhi' style='background: #7EB5C5;color: #FFFFFF;'>重置</button>

@@ -63,7 +63,8 @@ Page({
     canvasewm:'',
     goods_name:'',
     price:'',
-    img_detail:''
+    img_detail:'',
+    div_width:''
   },
 
   /**
@@ -238,6 +239,9 @@ Page({
     var h = that.data.height
     var dw = 300 / w          //canvas与图片的宽高比
     var dh = 200 / h
+    // that.setData({
+    //   div_width: 808 * ratio
+    // })
     canvas.setFillStyle('#ffffff');
     canvas.fillRect(0, 0, 375 * ratio, 550 * ratio);
 

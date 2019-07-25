@@ -111,7 +111,7 @@
     </view>
   </view>
   <view class='canvas_box {{canvas_type==1?canvas_hide:""}}'>
-    <canvas canvas-id='canvas' class="my_canvas" style="width: 90%; height: 470px"></canvas>
+    <canvas canvas-id='canvas' class="my_canvas" style="width: 90%; height: 500px"></canvas>
   </view>
   <view class='hui'></view>
   <view class='bottom'>

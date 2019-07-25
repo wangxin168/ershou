@@ -196,6 +196,7 @@ page {
   width: 199rpx;
   height: 199rpx;
   margin: 0 0 22rpx 30rpx;
+  border-radius: 50%;
 }
 .new{
   background: #FFE600;

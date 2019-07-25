@@ -73,6 +73,7 @@ Page({
         url: '/pages/login/login'
       })
     }
+    
     var that=this;
     wx.getSystemInfo({
       success: function (res) {
