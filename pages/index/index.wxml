@@ -19,7 +19,7 @@
       </picker>
     </view>
 
-    <view class='center'>墨尔本卖圈</view>
+    <view class='center'>澳村卖圈</view>
     <view></view>
   </view>
   <view class='baise {{jianrong==0?"baixia":""}}'>

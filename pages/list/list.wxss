@@ -303,8 +303,10 @@ button::after {
   background-color: #fff;
   margin-bottom: 20rpx;
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 30px;
   z-index: -1;
+  border: 1px solid #000;
+  margin-top: 20rpx;
 }
 
 .item-ava {
@@ -322,7 +324,7 @@ button::after {
 .item-img {
   width: 100%;
   height: 260rpx !important;
-  border-radius: 10rpx 10rpx 0 0;
+  border-radius: 30rpx 30rpx 0 0;
 }
 
 .content .item .item-title {

@@ -67,17 +67,24 @@
 </view>
 <view class='buy' style='margin-top:10rpx;'>
   <view class='Buyer'>
-    买家联系方式
+    ta的联系方式
   </view>
   <view class='contact'>
     <view class='tel'>
-      <view class='tel_phone'>电话TEL:</view>
-      <view class='tel_num {{huang==0?" ":"huang"}}' selectable='true' bindtap='copyBtn'>{{detail.mobile}}</view>
+      <view class='tel_num {{huang==0?" ":"huang"}}' selectable='true' bindtap='copyBtn'>
+      <view class='tel_phone'>电话</view>
+        <view>{{detail.mobile}}</view>
+      </view>
     </view>
     <view class='tel'>
-      <view class='tel_phone'>微信Wechat:</view>
-      <view class='tel_num {{huang2==0?" ":"huang"}}' selectable='true' bindtap='copywei' wx:if="{{detail.wx_number!='undefined'}}">{{detail.wx_number}}</view>
-      <view class='tel_num' wx:if="{{detail.wx_number=='undefined'}}">木有留微信啊</view>
+      <view class='tel_num {{huang2==0?" ":"huang"}}' selectable='true' bindtap='copywei' wx:if="{{detail.wx_number!='undefined'}}">
+        <view class='tel_phone'>微信</view>
+        <view>{{detail.wx_number}}</view>
+      </view>
+      <view class='tel_num' wx:if="{{detail.wx_number=='undefined'}}">
+        <view class='tel_phone'>微信</view>
+        <view>他没有留下微信</view>
+      </view>
     </view>
   </view>
   <view class='code' wx:if="{{detail.wx_img_code!=erwei_img}}">

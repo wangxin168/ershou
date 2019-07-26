@@ -1,10 +1,10 @@
 <form bindsubmit="bindFormSubmit">
-  <view class='er'>
+  <view class='er {{dianhua_new||weixin_new?"guding":""}}'>
     <view class='top {{jianrong==0?"ios":""}}'>
       <view class='left' bindtap='fan'>
         <image src='/img/qiepian.png'></image>
       </view>
-      <view class='center'>发布二手</view>
+      <view class='center'>发布闲置</view>
       <view></view>
     </view>
     <view class='serch {{jianrong==0?"serchxia":""}}'>
@@ -74,20 +74,24 @@
     <view class='da'>
       <view class='add'>添加联系方式</view>
       <view class='phone'>
-        <text>手机</text>
-        <input type='tel' bindinput='phone' placeholder='请输入手机号（必填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
-        <view bindtap='mima'>{{vals}}</view>
+        <!-- <text>手机</text> -->
+        <image src='../../img/dianhua.png' bindtap='dianhuashow'></image>
+        <view style='border:none;background:none;font-size:28rpx;' wx:if="{{dianok==1}}">{{phone}}</view>
+        <view bindtap='mima' wx:if="{{dianok==1}}">{{vals}}</view>
       </view>
       <view class='phone' style='border-top: 1rpx solid #E9E9E9;'>
         <text>验证码</text>
-        <input type='tel' bindinput='yanzheng' placeholder='请输入验证码' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+        <input type='tel' bindinput='yanzheng' placeholder='请输入验证码' placeholder-style='font-size: 32rpx;color: #CBCBCB;'></input>
         <view style='background:none;'></view>
       </view>
       <view class='phone' style='margin-top:14rpx;'>
-        <text>微信号</text>
-        <input type='text' bindinput='wxnum' placeholder='（选填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+        <!-- <text>微信号</text> -->
+        <!-- <input type='text' bindinput='wxnum' placeholder='（选填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input> -->
+        <image src='../../img/weixin.png' bindtap='weixinshow'></image>
+        <view style='border:none;background:none;font-size:28rpx;' wx:if="{{weixinok==1}}">{{wxnum}}</view>
         <view style='background:none;'></view>
       </view>
+      <view class='add'>上传微信二维码</view>
       <view class='shi'>
         <image src='/img/shizi.png' bindtap='wx_img' name="wx_img" />
         <image wx:for="{{tempFile}}" wx:key="index" src='{{item}}' name="pic" mode="aspectFill" />
@@ -119,5 +123,21 @@
     <!-- <button class='xiayibu' bindtap='aaa'>
       下一步
     </button> -->
+    <view class='box_show' wx:if="{{dianhua_new}}">
+      <view class='dianhua show_new'>
+        <image src='../../img/guanbi.png' bindtap='guandian'></image>
+        <view class='tianxie'>请填写手机号</view>
+        <input type='tel' bindinput='phone' placeholder='请输入手机号（必填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+        <view class='dianok' bindtap='dianok'>确定</view>
+      </view>
+    </view>
+    <view class='box_show'  wx:if="{{weixin_new}}">
+      <view class='weixin show_new'>
+        <image src='../../img/guanbi.png' bindtap='guandian'></image>
+        <view class='tianxie'>请填写微信号</view>
+        <input type='text' bindinput='wxnum' placeholder='（选填）' placeholder-style='font-size: 28rpx;color: #CBCBCB;'></input>
+        <view class='dianok' bindtap='weixinok'>确定</view>
+      </view>
+    </view>
   </view>
 </form>
