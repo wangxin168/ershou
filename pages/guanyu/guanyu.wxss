@@ -1,8 +1,9 @@
 page {
-  background: white;
+  /* background: white;
   position: absolute;
   height: 100%;
-  overflow-y: hidden;
+  width: 100%;
+  overflow-y: hidden; */
 }
 .top {
   width: 100%;
@@ -49,7 +50,8 @@ page {
 }
 .list_ul>image{
   width: 100%;
-  height: 100%;
+  height: 3680rpx;
+  display: block;
 }
 .list_ul .guanyu{
   width: 92%;

@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/xiaoxi/xiaoxi",
@@ -14,11 +14,12 @@
     "pages/hiszhuye/hiszhuye",
     "pages/wenzhang/wenzhang"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff", 
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black",
+    "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
